@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Page Title</title>
+    
+    <style>
+        body{
+            padding: 0%;
+            margin:0%;
+        	counter-reset:page;    
+        }
+        .A4 {
+        	page-break-after: always;
+            background: white;
+            size: A4;
+           	width: 21cm;
+            height: 28cm; 
+            display: block;
+            margin-top: 0;
+            margin: 0 auto;
+            //padding: 10px 25px;
+            //margin-bottom: 0.5cm;
+           	
+            //overflow-y: scroll;
+            //box-sizing: border-box;
+            font-size: 12pt;
+        }
+        .A4:first-child {
+		  page-break-before: avoid;
+		  counter-reset: page;
+		  }
+        .table{
+       		 box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+            /padding: 10%;
+            //width: auto;
+            //height: auto;
+        }
+        
+        
+      
+    
+        @media print {
+        
+            body {
+                width: 21cm;
+                height: 29.7cm;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .A4 ,.table{
+            	
+                box-shadow: none;
+                margin: 0;
+                width: 21cm;
+                height: 29.7cm;
+            }
+
+            .noprint {
+                display: none;
+            }
+
+            .enable-print {
+                display: block;
+            }
+           
+        
+            
+			
+			/* .footer1{
+				display: block;
+				position:relative;
+				bottom:0px;
+			}
+			 */
+			.component{
+				//display:hidden;
+			}
+			#previousBtn,#nextBtn{
+				display:none;
+			}
+			
+			
+			
+        }
+        
+        .tableContentHeader{
+        border-right:1px solid black;
+        border-bottom:1px solid black;
+        //padding:0px;
+        }
+        .tableContentBody{
+        border-right:1px solid black;
+        }
+        
+      	
+      	
+  /*     	.footer2 {
+        	display:none;
+   		 	
+			}
+		.footer1{
+        //position:absolute;
+        //bottom:0px;
+       	display:none;
+        } 
+        thead{
+        background-color:white;
+        }
+         */
+        
+
+	
+
+    </style>
+    <script  src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        var pageToBe =0;
+        var pages=0;
+        var finish = false;
+        $(document).ready(function () {
+        	var model = $(".A4").html();
+        	console.log(model);
+		 	var first=1;
+		 	
+            for( i=0;i<45 ;i++){
+            	var diff=$('.A4')[pages].scrollHeight*3/100;
+                    if(($('.A4')[pages].scrollHeight-$('.table').eq(pages).height()-diff)>0){
+                    	if(pages > 0 && finish ==true){
+                    		  x='<tr >    <td class="tableContentBody" ><td class="tableContentBody" >Brought Forward<td class="tableContentBody" >11180.00<td class="tableContentBody" >11180.00</tr>';  
+                    		  finish=false;
+                    		  $('.page').eq(pages).append(x);
+                    	}
+                    	x=$('  <tr >    <td class="tableContentBody" >      '+i+'          </td>   <td class="tableContentBody"> printing :Settelment and advance for petty cash  <td class="tableContentBody">10101 <td class="tableContentBody">  12121</td>            </tr>   ');
+                    	$('.page').eq(pages).append(x);
+                   
+                    
+                    //alert(Math.ceil($('.A4')[0].scrollHeight));
+                    //alert(Math.ceil($('.table').height()+60));
+                    } else  if($('.A4')[pages].scrollHeight-$('.table').eq(pages).height()>0){
+                        x+='<tr><td class="tableContentBody"><br></td><td class="tableContentBody"><br></td><td class="tableContentBody"><hr style="  display: block;"></td><td class="tableContentBody"><hr style="  display: block;"></td></tr>';
+                        x+='<tr >    <td class="tableContentBody" ><td class="tableContentBody" >Carried Forward<td class="tableContentBody" >11180.00<td class="tableContentBody" >11180.00</tr>';  
+                        x+='<tr><td class="tableContentBody"><br></td><td class="tableContentBody"><br></td><td class="tableContentBody"><br></td><td class="tableContentBody"><br></td></tr>';
+                        x+='</table>';
+                        $('.page').eq(pages).append(x);
+                        //numbering = ;
+                        //console.log(numbering);
+                        //<div class=footer2 >page</div>
+                        //numbering = numbering.text("1");
+                       // $('.A4').eq(pages).append($('.footer2').html());
+                        //$('.A4').eq(pages).children().find(".footer2").append("sdasdasdasdas");
+                        pages++;
+                        var A4 =$("<div class=A4></div>");
+                        A4.append(model)
+                       	//model="<div class=A4>"+model+"</div>";
+                       	$(".A4").eq(pages-1).after(A4);
+                       	i--;
+                       	finish=true;
+                       
+                       		//alert(diff);
+                       
+                       	
+                    	//page.append(model);
+                    	
+                        
+                    }
+               
+            }
+            while($('.A4')[pages].scrollHeight-$('.table').eq(pages).height()-$('.A4')[pages].scrollHeight*20/100 > 0){
+ 		  		x=$('  <tr >    <td class="tableContentBody" >               </td>   <td class="tableContentBody">   <td class="tableContentBody"> <td class="tableContentBody"> </td>            </tr>   ');
+            	$('.page').eq(pages).append(x);		
+ 		  	}
+           if($('.A4')[pages].scrollHeight-$('.table').eq(pages).height()-$('.A4')[pages].scrollHeight*10/100>0){
+                //var footer = $(".footer1").html();
+                footer ='  <div class="footer1"><table>  <tr><td>Amount in Words:  </td>   <td>    Two Millions Four Hundred Fifty-Five   </td>   </tr>  <tr>  <td> Narration 	</td>  <td><br>  </td>  </tr> <tr>  <td>___________   </td>   </tr>   <tr>  <td>    Checked/Verified By     </td>    </tr>  <tr>   <td>  Name  </td>  </tr>    <tr>    	<td> Designation    </td>  </tr><tr><td> Date:  </td>   </tr>  <tr>  <td>    Printed On:   </td>  </tr>  </table>   </div>';		
+        			//console.log(footer);
+                $('.A4').eq(pages).append(footer);
+                $('.A4').eq(pages).css({"position":"relative"});
+                $('.A4').eq(pages).find(".footer1").css({ "position":"absolute","bottom":"0px"  });
+              // alert( $('.A4').eq(pages).find(".footer1").html());
+               // $('.A4').eq(pages).append($('.footer2').html());
+                //$('.footer2').eq(pages).append(pages);
+                
+           }else{
+        	   x+='<tr><td class="tableContentBody"><br></td><td class="tableContentBody"><br></td><td class="tableContentBody"><hr style="  display: block;"></td><td class="tableContentBody"><hr style="  display: block;"></td></tr>';
+               x+='<tr >    <td class="tableContentBody" ><td class="tableContentBody" >Carried Forward<td class="tableContentBody" >11180.00<td class="tableContentBody" >11180.00</tr>';  
+               x+='<tr><td class="tableContentBody"><br></td><td class="tableContentBody"><br></td><td class="tableContentBody"><br></td><td class="tableContentBody"><br></td></tr>';
+               x+='</table>';
+               $('.page').eq(pages).append(x);
+               //numbering = ;
+               //console.log(numbering);
+               //<div class=footer2 >page</div>
+               //numbering = numbering.text("1");
+              // $('.A4').eq(pages).append($('.footer2').html());
+               //$('.A4').eq(pages).children().find(".footer2").append("sdasdasdasdas");
+               pages++;
+               var A4 =$("<div class=A4></div>");
+               A4.append(model)
+              	$(".A4").eq(pages-1).after(A4);
+              	x='<tr >    <td class="tableContentBody" ><td class="tableContentBody" >Brought Forward<td class="tableContentBody" >11180.00<td class="tableContentBody" >11180.00</tr>';  
+     		  	$('.page').eq(pages).append(x);
+     		  	while($('.A4')[pages].scrollHeight-$('.table').eq(pages).height()-$('.A4')[pages].scrollHeight*20/100 > 0){
+     		  		x=$('  <tr >    <td class="tableContentBody" >               </td>   <td class="tableContentBody">   <td class="tableContentBody"> <td class="tableContentBody"> </td>            </tr>   ');
+                	$('.page').eq(pages).append(x);		
+     		  	}
+     		  	footer ='  <div class="footer1"><table>  <tr><td>Amount in Words:  </td>   <td>    Two Millions Four Hundred Fifty-Five   </td>   </tr>  <tr>  <td> Narration 	</td>  <td><br>  </td>  </tr> <tr>  <td>___________   </td>   </tr>   <tr>  <td>    Checked/Verified By     </td>    </tr>  <tr>   <td>  Name  </td>  </tr>    <tr>    	<td> Designation    </td>  </tr><tr><td> Date:  </td>   </tr>  <tr>  <td>    Printed On:   </td>  </tr>  </table>   </div>';		
+        			//console.log(footer);
+                $('.A4').eq(pages).append(footer);
+                $('.A4').eq(pages).css({"position":"relative"});
+                $('.A4').eq(pages).find(".footer1").css({ "position":"absolute","bottom":"0px"  });
+     		  	
+     		  	
+           } 
+            
+            //alert(Math.ceil($('.A4')[0].scrollHeight));
+            //alert(Math.ceil($('.table').height()-60));
+          // pageToBe = pages;
+       		$(".A4").toggle();
+       		$(".A4").eq(0).toggle();
+        });
+
+        
+$(document).on("click","#nextBtn",function(){
+	//alert(pages);
+	//alert(pageToBe);
+	if(pageToBe < pages){
+		
+			pageToBe++;
+		
+		for(i= pageToBe-1; i<=pageToBe;i++){
+				$(".A4").eq(i).toggle();
+				//$(".A4").eq(1).toggle();
+			}
+		
+			
+	}
+	
+	
+	
+	//$(".A4").eq(pages).toggle();
+	//alert("next");
+});
+$(document).on("click","#previousBtn",function(){
+	//alert(pages);
+	//alert(pageToBe);
+	if( 0 < pageToBe ){
+		
+		pageToBe--;
+	
+	for(i= pageToBe+1; i>=pageToBe;i--){
+			$(".A4").eq(i).toggle();
+			//$(".A4").eq(1).toggle();
+		}
+	
+		
+}
+});
+
+    </script>
+    <script type="text/javascript">
+    
+    function printAll(){
+    	
+    	$(".A4").toggle();
+    	$(".A4").eq(pageToBe).toggle();
+    	window.print();
+    	$(".A4").toggle();
+    	$(".A4").eq(pageToBe).toggle();
+    }
+    
+    </script>
+</head>
+<body>
+<div class="component">
+<a href="#" style="text-decoration:none;position:fixed;top:50%;left:20%" id="previousBtn">
+<h2><--  </h2>
+ </a>
+ <a href="#" style="text-decoration:none;position:fixed;top:50%;right:20%" id="nextBtn">
+	<h2>-->    </h2>
+ </a>
+ <button class="noprint" onclick="printAll()" style="position:fixed;top:0px;left:40%;"> Print All</button><button class="noprint" onclick="window.print();" style="position:fixed;top:0px;left:50%;"> Print Current Page</button>
+    <div class="A4">
+    <table  style="width:100%;text-align: center;" class="table">
+    <thead class="tableHeader">
+    <tr>
+        <td style="margin: auto;font-size: x-large;"><b>
+        AUSAID/NFDN-2019
+    </b></td>
+    </tr>
+    <tr> <td ><b style="float: left;">Journal Voucher(JV) </b> <span style="float: right;"> <b   >Voucher No:0261-18/19<br>Date:31/01/2019</b></span></td></tr>
+    <tr><td><br></td></tr>
+    </thead>
+
+    <tbody  >
+    <tr >
+        <td >
+        <table   style="border: 1px solid black; width:100%;border-collapse: collapse;">
+            <thead class="tableHeader">
+                <tr>
+                    <th class="tableContentHeader">
+                        Sn
+                    </th>
+                    <th class="tableContentHeader">
+                        Particulars
+                    </th>
+                    <th class="tableContentHeader">Debit</th>
+                    <th class="tableContentHeader">Credit</th>
+                </tr>
+            </thead>
+            <tbody class="page" >  
+                            
+            </tbody>
+            
+     </table>
+    </td>
+ </tr>
+</tbody>
+
+
+
+</table>
+
+    </div>
+  
+	
+	
+ </div>   
+
+</body>
+
+</html>

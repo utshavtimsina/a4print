@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>HTML | DOM Window Print() method</title>
+<style type="text/css">
+
+/* Styles go here */
+
+.page-header, .page-header-space {
+  height: 90px;
+}
+
+.page-footer, .page-footer-space {
+  height: 40px;
+
+}
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+page[size="A4"] {  
+  width: 21cm;
+  height: 29.7cm; 
+}
+page[size="A4"][layout="landscape"] {
+  width: 29.7cm;
+  height: 21cm;  
+}
+
+
+.page-header {
+  position: fixed;
+  top: 0mm;
+  width: 100%;
+ // border-bottom: 1px solid black; /* for demo */
+  background: white; /* for demo */
+}
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid black; /* for demo */
+  background: white; /* for demo */
+}
+.tableHeader{
+	//position: fixed;
+  top: 40mm;
+  width: 100%;
+  z-index:1;
+  // height: 1000px;
+  //border-bottom: 1px solid black;
+}
+.table{
+	//top: 50mm;
+	position:fixed;
+	top:50mm;
+	//height: 150px;
+}
+.tableContentHeader{
+border-right:1px solid black;
+border-bottom:1px solid black;
+//padding:0px;
+}
+.tableContentBody{
+border-right:1px solid black;
+}
+
+
+.page {
+  page-break-after: always;
+}
+.page-footer-space:after {
+    counter-increment: page;
+    content: counter(page);
+}
+
+@page {
+  size: 7in 9.25in;
+   margin: 27mm 16mm 27mm 16mm;
+  
+}
+
+@media print {
+   thead {display: table-header-group;} 
+   //tfoot {display: table-footer-group;}
+   
+   button {display: none;}
+   
+   body {margin: 0;}
+}
+</style>
+<script type="text/javascript">
+	
+</script>
+
+</head>
+
+<body>
+	
+  <div class="page-header" style="text-align: center">
+    <h1>AUSAID/NFDN-2019</h1>
+    <br/>
+    <button type="button" onClick="window.print()" style="background: pink">
+      PRINT ME!
+    </button>
+  </div>
+<page size="A4" layout="landscape"></page>
+<page size="A4">sdsd</page>
+<page size="A4"></page>
+
+  <!-- <div class="page-footer">
+    I'm The Footer
+  </div> -->
+	<div  class="">
+	<table  style="width:100%">
+
+    <thead>
+      <tr>
+        <td>
+          <!--place holder for the fixed-position header-->
+          <div class="page-header-space"></div>
+        </td>
+      </tr>
+    </thead>
+
+    <tbody  >
+     <tr >
+     	<td >
+     	<table   style="border: 1px solid black; width:100%;border-collapse: collapse;">
+     		<thead >
+                <tr>
+                    <th class="tableContentHeader">
+                        Sn
+                    </th>
+                     <th class="tableContentHeader">
+                        Particulars
+                    </th>
+                    <th class="tableContentHeader">Debit</th>
+                    <th class="tableContentHeader">Credit</th>
+                </tr>
+            </thead>
+            <tbody class="page" >
+                <tr >
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">c
+                    <td class="tableContentBody">101010	
+                    <td class="tableContentBody">  12121
+                    </td>
+                </tr>   
+                <tr >
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr> 
+                    <tr>
+                    <td class="tableContentBody" >
+                        1
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        2
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        3
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="tableContentBody" >
+                        4
+                    </td>
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">
+                    <td class="tableContentBody">  
+                    </td>
+                </tr>         
+               </tbody>
+     	</table>
+     	</td>
+     </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td  >
+          <!--place holder for the fixed-position footer-->
+          <div class="page-footer-space" >Page </div>
+         
+        </td>
+      </tr>
+    </tfoot>
+   
+  </table>
+  </div>
+
+
+
+	<script>
+		function myFunction() {
+			var myWindow = window.open("", "", "width=200,height=100");
+			myWindow.document
+					.write("<form>  <input type='button' value='Print'   onclick=window.print() />  </form> ");
+			myWindow.focus();
+		}
+	</script>
+</body>
+<html>
